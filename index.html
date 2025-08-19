@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SR University Fest 2024</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b35;
+            --secondary: #2a9d8f;
+            --accent: #e9c46a;
+            --dark: #264653;
+            --light: #f8f9fa;
+            --text: #333;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark), #1a3a4a);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(38, 70, 83, 0.8), rgba(38, 70, 83, 0.9)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #ff521a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            box-shadow: 0 4px 15px rgba(42, 157, 143, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: #21867a;
+            box-shadow: 0 6px 20px rgba(42, 157, 143, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Events Section */
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .event-content {
+            padding: 25px;
+        }
+
+        .event-date {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .event-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .event-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .schedule {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .schedule-item {
+            display: flex;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .schedule-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .schedule-date {
+            min-width: 100px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .schedule-details h4 {
+            margin-bottom: 5px;
+        }
+
+        .schedule-details p {
+            color: #666;
+        }
+
+        /* College Section */
+        .college-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .college-img {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .college-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .college-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #1a3a4a);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-column p, .footer-column li {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .college-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--dark);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                padding: 20px 0;
+                gap: 0;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav a {
+                display: block;
+                padding: 15px;
+                margin: 5px 20px;
+                border-radius: 5px;
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>SR <span>UNIVERSITY</span></h1>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#college">College</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>SR UNIVERSITY FEST 2024</h2>
+            <p>Join us for an unforgettable 3-day celebration of culture, creativity, and entertainment. Experience the best of student talent and university spirit!</p>
+            <div class="hero-buttons">
+                <a href="#events" class="btn">Explore Events</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fest Events</h2>
+                <p>Three days of non-stop entertainment and competition</p>
+            </div>
+            <div class="events-container">
+                <!-- Day 1: Cultural Fest -->
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80');"></div>
+                    <div class="event-content">
+                        <span class="event-date">Day 1: 15th Nov 2024</span>
+                        <h3>Cultural Fest</h3>
+                        <p>Experience the rich diversity of cultures through dance, music, art exhibitions, and traditional performances from different regions.</p>
+                        <a href="#" class="btn">View Schedule</a>
+                    </div>
+                </div>
+                
+                <!-- Day 2: Events Day -->
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');"></div>
+                    <div class="event-content">
+                        <span class="event-date">Day 2: 16th Nov 2024</span>
+                        <h3>Events Day</h3>
+                        <p>Compete in exciting competitions, workshops, and interactive sessions. From robotics to debate, showcase your talents.</p>
+                        <a href="#" class="btn">View Schedule</a>
+                    </div>
+                </div>
+                
+                <!-- Day 3: Pro Night -->
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');"></div>
+                    <div class="event-content">
+                        <span class="event-date">Day 3: 17th Nov 2024</span>
+                        <h3>Pro Night</h3>
+                        <p>The grand finale with celebrity performances, DJ night, and spectacular fireworks. Dance the night away with your friends!</p>
+                        <a href="#" class="btn">View Schedule</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>About the Fest</h2>
+                <p>Everything you need to know about SR University Fest 2024</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>SR University Annual Fest</h3>
+                    <p>SR University Fest is the largest cultural and technical festival of the university, bringing together students, faculty, and industry experts for three days of celebration, learning, and entertainment.</p>
+                    <p>This year's fest promises to be bigger and better with over 50 events spread across three exciting days. From cultural performances to technical competitions, from celebrity performances to interactive workshops - there's something for everyone!</p>
+                    <p>Join thousands of participants and spectators as we celebrate the spirit of innovation, creativity, and university life.</p>
+                    <a href="#" class="btn">Download Brochure</a>
+                </div>
+                <div class="schedule">
+                    <h3>Fest Schedule</h3>
+                    <div class="schedule-item">
+                        <div class="schedule-date">15th Nov</div>
+                        <div class="schedule-details">
+                            <h4>Cultural Fest</h4>
+                            <p>10:00 AM - 9:00 PM</p>
+                            <p>Stage Performances, Art Exhibitions, Food Stalls</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-date">16th Nov</div>
+                        <div class="schedule-details">
+                            <h4>Events Day</h4>
+                            <p>9:00 AM - 8:00 PM</p>
+                            <p>Technical Competitions, Workshops, Guest Lectures</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-date">17th Nov</div>
+                        <div class="schedule-details">
+                            <h4>Pro Night</h4>
+                            <p>6:00 PM - 12:00 AM</p>
+                            <p>Celebrity Performance, DJ Night, Fireworks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- College Section -->
+    <section id="college">
+        <div class="container">
+            <div class="section-title">
+                <h2>About SR University</h2>
+                <p>Learn more about our prestigious institution</p>
+            </div>
+            <div class="college-info">
+                <div class="college-img">
+                    <img src="https://sru.edu.in/assets/schools/srix-building.png" alt="SR University Campus">
+                </div>
+                <div class="college-details">
+                    <h3>SR University: Excellence in Education</h3>
+                    <p>SR University is a premier institution of higher learning committed to academic excellence, research, and innovation. Located in a serene environment, our campus provides the perfect setting for holistic development.</p>
+                    <p>With state-of-the-art facilities, world-class faculty, and a vibrant student community, SR University fosters an environment where students can thrive academically and personally.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5000+</div>
+                            <div class="stat-text">Students</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-text">Faculty</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-text">Programs</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-text">Campus Facilities</div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Visit Campus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SR University Fest</h3>
+                    <p>Join us for an unforgettable celebration of culture, creativity, and university spirit. Three days of non-stop entertainment and competition!</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#college">College</a></li>
+                        <li><a href="#">Registration</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Event Days</h3>
+                    <ul>
+                        <li>Cultural Fest - 15th Nov</li>
+                        <li>Events Day - 16th Nov</li>
+                        <li>Pro Night - 17th Nov</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> SR University Campus, Warangal</p>
+                    <!-- <p><i class="fas fa-phone"></i> +91 98765 43210</p> -->
+                    <!-- <p><i class="fas fa-envelope"></i> fest@sr.edu.in</p> -->
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 SR University Fest. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                navMenu.classList.remove('active');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Active Link Highlighting
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
